@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calculator.css">
+    <title>Calculator - By Code Traversal</title>
+</head>
+<body>
+    <div class="container">
+    <div class="calculator">
+        <input type="text" id="display" placeholder="0">
+        <div class="row">
+            <button class="button operator"  onclick="clearDisplay()">AC</button>
+            <button class="button operator"  onclick="appendToDisplay('.')">.</button>
+            <button class="button operator"  onclick="appendToDisplay('%')">%</button>
+            <button class="button operator"  onclick="appendToDisplay('/')">/</button>
+        </div>
+        <div class="row">
+            <button class="button "  onclick="appendToDisplay('7')">7</button>
+            <button class="button "  onclick="appendToDisplay('8')">8 </button>
+            <button class="button "  onclick="appendToDisplay('9')">9</button>
+            <button class="button operator"  onclick="appendToDisplay('*')">*</button>
+        </div>
+        <div class="row">
+            <button class="button "  onclick="appendToDisplay('4')">4</button>
+            <button class="button "  onclick="appendToDisplay('5')">5</button>
+            <button class="button "  onclick="appendToDisplay('6')">6</button>
+            <button class="button operator"  onclick="appendToDisplay('-')">-</button>
+        </div>
+        <div class="row">
+            <button class="button "  onclick="appendToDisplay('1')">1</button>
+            <button class="button "  onclick="appendToDisplay('2')">2</button>
+            <button class="button "  onclick="appendToDisplay('3')">3</button>
+            <button class="button operator"  onclick="appendToDisplay('+')">+</button>
+        </div>
+        <div class="row">
+            <button class="button "  onclick="appendToDisplay('00')">00</button>
+            <button class="button "  onclick="appendToDisplay('0')">0</button>
+            <button class="button equalBtn"  onclick="calculate()">=</button>
+            
+        </div>
+    </div>
+</div>
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+    
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+    
+        function calculate() {
+            let expression = document.getElementById('display').value;
+            let result;
+            try {
+                result = eval(expression);
+                if (!Number.isFinite(result)) {
+                    throw "Invalid expression";
+                }
+                document.getElementById('display').value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
